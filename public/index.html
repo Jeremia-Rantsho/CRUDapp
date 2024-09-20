@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="/public/styles.css" />
+    <title>Car CRUD App</title>
+</head>
+
+<body x-data="mostPopularCarFunction">
+    <div class="getSection">
+        <h1>Car CRUD API Application</h1>
+        <h2>(Create, Read, Update, Delete)</h2>
+        <h3>Press the button below to get the most popular car make from the list of cars</h3>
+
+        <div>
+            <button @click="getPopularCar()">
+                Most Popular Car
+            </button>
+
+            <!-- <div x-show="open" x-transition>
+                <span x-ref="popularCarSpan" x-show="popularCar" x-cloak>Loading...</span>
+            </div> -->
+
+            <div x-text="popularCar"></div>
+        </div>
+    </div>
+
+    <div class="carListSection">
+        <button @click="getCarList">Get Car List</button>
+        <table class="carTable" border="1" x-show="carList.length > 0">
+            <thead>
+                <tr>
+                    <th>Car Registration</th>
+                    <th>Car Color</th>
+                    <th>Car Make</th>
+                    <th>Car Model</th>
+                </tr>
+            </thead>
+            <tbody>
+                <template x-for="car in carList" :key="car.reg_number">
+                    <tr>
+                        <td x-text="car.reg_number"></td>,
+                        <td x-text="car.color"></td>,
+                        <td x-text="car.make"></td>,
+                        <td x-text="car.model"></td>
+                    </tr>
+                </template>
+            </tbody>
+            
+
+        </table>
+    </div>
+
+    <h2>Add a New Car</h2>
+    <form @submit.prevent="addCar()">
+        <label for="reg_num">Registration No:</label>
+        <input type="text" id="reg_num" name="reg_num" required><br>
+        <label for="color">Color:</label>
+        <input type="text" id="color" name="color" required><br>
+        <label for="make">Make:</label>
+        <input type="text" id="make" name="make" required><br>
+        <label for="model">Model:</label>
+        <input type="text" id="model" name="model" required><br>
+        
+        <button type="submit">Add Car</button>
+    </form>
+    <span x-text="responseMessage"></span>
+
+    <h2>Update Car</h2>
+    <form id="updateCarForm">
+        <label for="updateReg">Car Registration:</label>
+        <input type="text" id="updateReg" name="regNumber" required><br>
+        <label for="updateColor">New Color:</label>
+        <input type="text" id="updateColor" name="color"><br>
+        <label for="updateMake">New Make:</label>
+        <input type="text" id="updateMake" name="make"><br>
+        <label for="updateModel">New Model:</label>
+        <input type="text" id="updateModel" name="model"><br>
+        <button type="submit">Update Car</button>
+    </form>
+    <span x-text="updateMessage"></span>
+
+    <h2>Delete Car</h2>
+    <form id="deleteCarForm">
+        <label for="deleteReg">Car Registration:</label>
+        <input type="text" id="deleteReg" name="regNumber" required><br>
+        <button type="submit">Delete Car</button>
+    </form>
+    <span x-text="deleteMessage"></span>
+
+    <script src="/public/functionality.js"></script>
+    <script type="module" src="/Bootcamp/mostPopularCar.js"></script>
+</body>
+
+</html>

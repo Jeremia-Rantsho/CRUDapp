@@ -1,0 +1,38 @@
+body {
+    background-color: rgb(56, 54, 54);
+    color: rgb(187, 185, 185);
+    text-align: center;
+}
+
+button {
+    border-radius: .5em;
+    border: .1em solid white;
+    height: 2em;
+    color: aliceblue;
+    background-color: black;
+    margin: 1em;
+}
+
+[x-cloak] {
+    display: none !important;
+}
+
+button:hover {
+    color: rgb(0, 0, 0);
+    background-color: rgb(125, 125, 126);
+    font-weight: bold;
+    border: .1em solid white;
+}
+
+span {
+    color: white;
+}
+
+hr {
+    border-color: rgb(145, 143, 143);
+}
+
+.carTable{
+    margin-left: auto;
+    margin-right: auto;
+}
