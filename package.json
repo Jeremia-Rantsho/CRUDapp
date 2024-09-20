@@ -29,6 +29,7 @@
     "test": "mocha"
   },
   "dependencies": {
+    "assert": "^2.1.0",
     "axios": "^1.7.7",
     "cors": "^2.8.5",
     "express": "^4.21.0",
