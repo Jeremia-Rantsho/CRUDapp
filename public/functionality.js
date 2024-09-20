@@ -24,7 +24,7 @@ document.addEventListener('alpine:init', () => {
 
             async getPopularCar(){
                 try{
-                    const response = await axios.get('http://localhost:3050/popularCar');
+                    const response = await axios.get('/popularCar');
                     this.popularCar = response.data;
                 }
                 catch(error){
@@ -33,7 +33,7 @@ document.addEventListener('alpine:init', () => {
             },
             async getCarList(){
                 try{
-                    const response = await axios.get('http://localhost:3050/all_cars');
+                    const response = await axios.get('/all_cars');
                     this.carList = response.data;
                 }
                 catch(error){
@@ -41,7 +41,7 @@ document.addEventListener('alpine:init', () => {
                 }
             },
             async addCar() {
-                await axios.post('http://localhost:3050/addCar', this.newCar)
+                await axios.post('/addCar', this.newCar)
                     .then(response => {
                         this.responseMessage = response.data.message;
                         this.clearNewCarForm();
@@ -51,7 +51,7 @@ document.addEventListener('alpine:init', () => {
                     });
             },
             async updateCar() {
-                await axios.put(`http://localhost:3050/updateCarinfo/${this.updateCarData.reg_number}`, this.updateCarData)
+                await axios.put(`/updateCarinfo/${this.updateCarData.reg_number}`, this.updateCarData)
                     .then(response => {
                         this.updateMessage = response.data.message;
                         this.clearUpdateCarForm();
@@ -61,7 +61,7 @@ document.addEventListener('alpine:init', () => {
                     });
             },
             async deleteCar() {
-                await axios.delete(`http://localhost:3050/deleteCar/${this.deleteCarReg}`)
+                await axios.delete(`/deleteCar/${this.deleteCarReg}`)
                     .then(response => {
                         this.deleteMessage = response.data.message;
                         this.deleteCarId = null;
